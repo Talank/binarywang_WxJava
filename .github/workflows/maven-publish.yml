@@ -1,9 +1,6 @@
 name: Publish to Maven Central
 on:
-  push:
-    branches:
-      - develop
-
+  workflow_dispatch:
 permissions:
   contents: write
 
@@ -107,3 +104,5 @@ jobs:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+    strategy:
+      fail-fast: false
